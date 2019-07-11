@@ -62,7 +62,7 @@ dotnet build
 ... and make sure also are able to test your project by executing:
 
 ```
-dotenet test
+dotnet test
 ```
 
 You should be greeted with a message similar to this

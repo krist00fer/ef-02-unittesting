@@ -1,6 +1,6 @@
 # Engineering Fundamentals Lightning Hack 2 - Unit Testing
 
-> This repository and its content is meant to be used as a continuation of a leader lead training. 
+> This repository and its content are meant to be used as a continuation of a leader lead training. 
 
 Unit Testing is, or should be, a fundamental part of any software engineering projects. But in order to even have a discussion around if we need Unit Testing or not, we need to come to a common ground about what it is and what it isn’t. We need to understand how code look like that actually enables us to unit test it, because not all code does.
 
@@ -10,7 +10,7 @@ Perhaps a bold statement, but this exercise will use the TDD approach to force y
 
 ## Setting up your environment
 
-> This training will use .NET Core and C# but almost any programming language and tools will work. If you decide to go with another programming language the same principles apply and you should try to follow the instructions given none the less. A unit test is the same in all programming languages and Test Drivven Development doesn't demand you to use any specific language or tool.
+> This training will use .NET Core and C# but almost any programming language and tools will work. If you decide to go with another programming language the same principles apply, and you should try to follow the instructions given none the less. A unit test is the same in all programming languages and Test Driven Development doesn't demand you to use any specific language or tool.
 
 > All examples are based on .NET Core version 2.2.300. Check your own version by executing `dotnet --version` from a terminal window of your choice
 
@@ -97,7 +97,7 @@ While in Reverse Polish Notation you would write:
 
 I.e. you first state what the values are and then what operator to apply.
 
-> Internally most of the implementation of such calculator will use a collection called a “stack”. A stack has the ability to push information to it and then retrieve values by issuing a pop. Think of it as a pile of papers on your desk. Let’s say you “push” a paper with the letter A onto the “stack” of papers, then you “push” another paper whit the letter B onto the same “stack” of papers. Later on you can take or “pop” the paper on the top and you’ll retrieve the paper marked B. Next time you “pop” another paper from the “stack” you’ll receive the paper with an A on. It’s quite common to refer to these kind of behavior in a "queue" or "collection" as “First In, Last Out”.
+> Internally most of the implementation of such calculator will use a collection called a “stack”. A stack has the ability to push information to it and then retrieve values by issuing a pop. Think of it as a pile of papers on your desk. Let’s say you “push” a paper with the letter A onto the “stack” of papers, then you “push” another paper whit the letter B onto the same “stack” of papers. Later on you can take or “pop” the paper on the top and you’ll retrieve the paper marked B. Next time you “pop” another paper from the “stack” you’ll receive the paper with an A on. It’s quite common to refer to these kinds of behavior in a "queue" or "collection" as “First In, Last Out”.
 
 Since our calculator will be a RPN Calculator it should have the same behavior, so you'll first "push" the values you want to operate on. When you later apply an operator, like “add”, “subtract”, “multiply”, “divide”, “square root”, etc. the internals of the calculator should “pop” the correct number of needed values to correctly execute the calculation. This in turn means that in order to execute an “add” operation, there need to be at least two numbers pushed to the calculator, while a “square root” operation would only need a single number.
 
@@ -142,7 +142,7 @@ Show Result = 100
 
 ### [Hard](docs/instructions-hard.md)
 
-If you are used to writing code and feel that you grasp the context of Test Driven Development, then this is the level for you. Click [here](docs/instructions-hard.md) for your instructions.
+If you are used to writing code and feel that you grasp the context of Test-driven Development, then this is the level for you. Click [here](docs/instructions-hard.md) for your instructions.
 
 ### [Medium](docs/instructions-medium.md)
 

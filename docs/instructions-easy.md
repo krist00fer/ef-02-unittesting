@@ -6,9 +6,9 @@ Create a RPN Calculator Class according to what was descibed earlier using *Test
 ### Calculator Methods
 
 * Result - Returns the last pushed value from the stack without removing it. If no result is available, method should return 0.
-* Push - Adds a value to the calculators stack
+* Push - Adds a value to the calculator's stack
 * Stack - Returns a list of values representing the current internal stack
-* Pop - Removes the last pushed value from the calculators stack
+* Pop - Removes the last pushed value from the calculator's stack
 * Clear - Cleans the internal state of our calculator
 
 ### Math Methods
@@ -21,7 +21,7 @@ Create a RPN Calculator Class according to what was descibed earlier using *Test
 
 ## Step By Step Instructions
 
-By know you should have created your "empty" solution and should be able to execute the commands `dotnet build` to build your solution, and `dotnet test` to run all unittests in your solution. Let's get started.
+By know you should have created your "empty" solution and should be able to execute the commands `dotnet build` to build your solution, and `dotnet test` to run all unit tests in your solution. Let's get started.
 
 1. Open your solution in Visual Studio Code by executing
 
@@ -106,9 +106,9 @@ Total tests: 1
  Total time: 1.0621 Seconds
 ```
 
-> From here on, when I referr to "build your solution", "test your solution" or the combination "build and test your solution" I refer to any commands that will trigger a build or your tests to run. Feel free to continue using the terminal window to do so or have a look at the built in features in Visual Studio Code or one of the many available Extensions.
+> From here on, when I refer to "build your solution", "test your solution" or the combination "build and test your solution" I refer to any commands that will trigger a build or your tests to run. Feel free to continue using the terminal window to do so or have a look at the built in features in Visual Studio Code or one of the many available Extensions.
 
-> A common misstake is forget to save your files before you build and/or test your solution. So remember to save your files!
+> A common mistake is to forget to save your files before you build and/or test your solution. So, remember to save your files!
 
 7. Remember our mantra: Red->Green->Refactor . We need to be in the state where one or more unit tests are failing in order to be allowed to change our code. Right now we have one test that is failing but it's due to the test not being written correctly, so let's fix that. In `RpnCalculator.Tests.cs`, edit your test to look like this:
 
@@ -146,9 +146,9 @@ Total tests: 1
         }
 ```
 
-11. Yeahaaa! We've just fixed our first failing Unit Test. OK the test and the implementation was trivial but still if you don't look at it as only a test, but also as a specification, we now have documentation that says that an empty calculator should return the result 0. So this moved us to Green in our mantra: Red->*Green*->Refactor. So if all tests are working (we only have one) we are allowed to refactor our code. Refactor means to change without changing the observed behaviour.
+11. Yeahaaa! We've just fixed our first failing Unit Test. OK the test and the implementation was trivial but still if you don't look at it as only a test, but also as a specification, we now have documentation that says that an empty calculator should return the result 0. So this moved us to Green in our mantra: Red->*Green*->Refactor. So if all tests are working (we only have one) we are allowed to refactor our code. Refactor means to change without changing the observed behavior.
 
-12. So if all tests are working (we only have one) we are allowed to refactor our code. Refactor means to change without changing the observed behaviour. So let's look at both our implementation code and the unit test code, is there anything we could make more simple or more effective? Probably not much at this time, so let's keep going. We need to get to the a state where one or more Unit Tests are failing and right now the best we can do is probably to write another Unit Test.
+12. So if all tests are working (we only have one) we are allowed to refactor our code. Refactor means to change without changing the observed behavior. So let's look at both our implementation code and the unit test code, is there anything we could make more simple or more effective? Probably not much at this time, so let's keep going. We need to get to a state where one or more Unit Tests are failing and right now the best we can do is probably to write another Unit Test.
 
 > From now on, when the instructions mentions a test that need to be changed or implemented we expect you to do that in the file `RpnCalculator.Tests.cs` and any implementation that need to be changed or implemented should be done in the file `RpnCalculator.cs`.
 
@@ -167,7 +167,7 @@ Total tests: 1
 
 > Notice that most often our unit tests are setup in three steps: `setup, act, assert` or sometimes referred to as `given, when, then`. In this test, we are given a new calculator, we act by pusing to it and nothing should really happen so the `assert`or `then` stage of our test isn't valid in this test other than it shouldn't throw an exception.
 
-14. Once again, we have a test that fails and it is a possitive fail, meaning it fails due to the right reasons, so we need to fix it. Pushing a zero to the calculator shouldn't throw an exception... but how do we fix it? It's quite simple, just remove the line that throws the exception.
+14. Once again, we have a test that fails and it is a positive fail, meaning it fails due to the right reasons, so we need to fix it. Pushing a zero to the calculator shouldn't throw an exception... but how do we fix it? It's quite simple, just remove the line that throws the exception.
 
 ```csharp
         public void Push(double v)
@@ -175,7 +175,7 @@ Total tests: 1
         }
 ```
 
-15. Ok, that felt wierd again, but it's true, this is the least code we can fix in order to adher to the requirements aka. our unit tests. So we moved from `red` to `green` state and can now start thinking about refactoring. Can we make our code better or easier. Well our implementation is quite basic and probably hard to make any easier, but what about our test class. Seems like if all (two) of our tests start with the line `RpnCalculator calc = new RpnCalculator();`. Perhaps just a coincidence but let's keep an eye on it, to see if it becomes a trend.
+15. Ok, that felt wierd again, but it's true, this is the least code we can fix in order to adher to the requirements aka. our unit tests. So we moved from `red` to `green` state and can now start thinking about refactoring. Can we make our code better or easier? Well our implementation is quite basic and probably hard to make any easier, but what about our test class. Seems like if all (two) of our tests start with the line `RpnCalculator calc = new RpnCalculator();`. Perhaps just a coincidence but let's keep an eye on it, to see if it becomes a trend.
 
 16. Time to implement a new Unit Test. What about looking at what should happen with the `Result()` method if we first push some number? Implement the following test and then compile and test your solution.
 
@@ -227,7 +227,7 @@ Total tests: 1
 
 ```
 
-19. We are back at a `green` state and should consider refactoring our code. Our implemenation of our calculator still looks very simple (even too simple) so there isn't much we can do there. Our test file start to show some resemblance of recurring patterns that could be simplified. The test framework we are currently using, Xunit, provide us with a way of creating parameterized unit tests. That would be very welcome in order to simplify the two test methods that test that Result should return the last pushed value. We do understand the value of having both (since only one of them made our implementation fail) so we don't want to remove any of them but simplify them. At the same time, we can now certainly say that all tests that we have created need a calculator to work on, so if we can do that once that would also simplify the tests a lot. Replace or change the content of your RpnCalculator.cs so it looks like this. Build and test:
+19. We are back at a `green` state and should consider refactoring our code. Our implementation of our calculator still looks very simple (even too simple) so there isn't much we can do there. Our test file start to show some resemblance of recurring patterns that could be simplified. The test framework we are currently using, Xunit, provide us with a way of creating parameterized unit tests. That would be very welcome in order to simplify the two test methods that test that Result should return the last pushed value. We do understand the value of having both (since only one of them made our implementation fail) so we don't want to remove any of them but simplify them. At the same time, we can now certainly say that all tests that we have created need a calculator to work on, so if we can do that once that would also simplify the tests a lot. Replace or change the content of your RpnCalculator.cs so it looks like this. Build and test:
 
 ```csharp
 using System;
@@ -275,7 +275,7 @@ namespace EF2.UnitTesting.Tests
 
 ```
 
-20. So what did we do there? Somehow it looked like we cut one test, but when we test the solution we still have 4 tests that got successfully executed. The answer lies within the last test that is now "flagged" with the `Theory` attribute instead of the `Fact`that we've used for the other tests. This is a feature of Xunit that allow us to add input variables and different values to the same test, so we are still running the same tests, just simplified the code. We also simplified the creation of the RpnCalculator that we use in every class and now it's available by default in every test we do. Awesome, there isn't much more we can refactor at this point so let's continue.
+20. So what did we do there? Somehow it looked like we cut one test, but when we test the solution, we still have 4 tests that got successfully executed. The answer lies within the last test that is now "flagged" with the `Theory` attribute instead of the `Fact` that we've used for the other tests. This is a feature of Xunit that allow us to add input variables and different values to the same test, so we are still running the same tests, just simplified the code. We also simplified the creation of the RpnCalculator that we use in every class and now it's available by default in every test we do. Awesome, there isn't much more we can refactor at this point so let's continue.
 
 21. Time to write some more specifications (or Unit Tests) to drive our code foward. Implement the following test and let Visual Studio Code implement the implementation of the missing method `Stack()`. Test your solution.
 
@@ -314,7 +314,7 @@ namespace EF2.UnitTesting.Tests
         }
 ```
 
-24. As expected the new test fails :-) And we are happy since we can fix something. This time the implementation isn't as obvious or simple but the sneaky way we can fix this test is actually by doing this in our implementation. Update your implementation accordingly and test your solution.
+24. As expected the new test fails :-) And we are happy since we can fix something. This time the implementation isn't as obvious or simple, but the sneaky way we can fix this test, is by doing this in our implementation. Update your implementation accordingly and test your solution.
 
 ```csharp
         public double[] Stack()

@@ -603,7 +603,11 @@ namespace EF2.UnitTesting
         }
 ```
 
-40. That's awesome we now have 23 unit tests that succeed. BTW, have you noticed any repeating patterns that we could refactor? Indeed if we look into our implementation it looks a lot like if we are repeating ourselves over and over again with the different operators. But since we are in a `green` state we are ok and safe to do refactoring of our code, so let's add a new private method and change the implementation of our methods `Add()`, `Sub()`, `Mul()` and `Div()`. Here is the whole new imlementation of our calculator.
+40. That's awesome we now have 23 unit tests that succeed. BTW, have you noticed any repeating patterns that we could refactor? Indeed if we look into our implementation it looks a lot like if we are repeating ourselves over and over again with the different operators. But since we are in a `green` state we are ok and safe to do refactoring of our code, so let's add a new private method and change the implementation of our methods `Add()`, `Sub()`, `Mul()` and `Div()`. 
+
+Read more about expression trees and Lambdas [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions "Lambda expressions") 
+
+Here is a whole new imlementation of our calculator.
 
 ```csharp
 using System;

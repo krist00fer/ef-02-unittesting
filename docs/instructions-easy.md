@@ -528,7 +528,7 @@ namespace EF2.UnitTesting
 
         [Theory]
         [InlineData(2, 1, 1)]
-        [InlineData(10, -20, -10)]
+        [InlineData(10, 20, -10)]
         [InlineData(5, 0, 5)]
         public void Sub_WithTwoPushedValues_ShouldCalculateDifference(double v1, double v2, double expectedResult)
         {
